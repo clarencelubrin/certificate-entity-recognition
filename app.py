@@ -102,12 +102,12 @@ if GEMINI_API_KEY:
     
 class DocumentInfo(BaseModel):
     """The main Pydantic model for the final JSON response."""
-    TYPE: str = Field(description="The type of document or item (e.g., 'Certificate', 'Award', 'Diploma', 'Contract').")
+    TYPE: str = Field(description="The type of document or item (e.g., 'Certificate of Participation', 'Award', 'Diploma', 'Contract').")
     AWARDEE: str = Field(description="The name of the person or entity receiving the award/document.")
     ROLE: str = Field(description="The role or capacity in which the awardee received the item (e.g., 'Speaker', 'Participant', 'Winner').")
     EVENT: str = Field(description="The name of the event, conference, or program.")
-    DATE: str = Field(description="The date the document was issued or the event took place (YYYY-MM-DD format if possible, otherwise use a readable format).")
-    LOCATION: str = Field(description="The location (City, Country) where the event or issuance occurred.")
+    DATE: str = Field(description="The date the document was issued or the event took place (retain the formatting of the date).")
+    LOCATION: str = Field(description="The location (retain the complete address stated in the certificate) where the event or issuance occurred.")
     SIGNATORIES: List[str] = Field(description="A list of the names of the people who signed the document. Extract only the names, not titles or roles.")
 
 @app.get("/has_gemini")

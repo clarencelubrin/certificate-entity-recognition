@@ -1,0 +1,5 @@
+.venv/*
+.git/
+__pycache__/
+model.conf
+Phi-3.5-mini-instruct-Q4_K_M.gguf

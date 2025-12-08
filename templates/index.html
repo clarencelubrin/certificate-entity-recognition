@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/container.css">
+    <link rel="stylesheet" href="/static/css/button.css">
+    <link rel="stylesheet" href="/static/css/image-viewer.css">
+    <link rel="stylesheet" href="/static/css/table.css">
+    <link rel="stylesheet" href="/static/css/modal.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="relative sidebar flex flex-col justify-between gap-4 p-6"> 
+        <div class="flex flex-col gap-4">
+            <div class="sidebar-header flex flex-col gap-8">
+                <div class="sidebar-title flex flex-col gap-2">
+                    <h1>Certificate Entity Recognition</h1>
+                    <p>Upload images of certificates down below. Click the <b>Play button</b> to generate predictions.</p>
+                </div>
+                <button class="btn-primary" id="upload-button">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 2V10M8 2L11.3333 5.33333M8 2L4.66667 5.33333M14 10V12.6667C14 13.0203 13.8595 13.3594 13.6095 13.6095C13.3594 13.8595 13.0203 14 12.6667 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V10" stroke="#FAFAF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Upload
+                </button>
+            </div>      
+            
+            <div id="queue-container" class="flex flex-col max-h-[55vh] overflow-y-auto overflow-x-hidden"></div>
+        </div>
+        
+        <div class="absolute bottom-6 left-6 flex flex-row gap-2 sidebar-footer">
+            <button class="btn-secondary" id="clear-button" title="Clear File Queue">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.6667 14.6666L10 12M12.6667 9.32665C12.8435 9.32665 13.013 9.25641 13.1381 9.13138C13.2631 9.00636 13.3333 8.83679 13.3333 8.65998V7.99998C13.3333 7.64636 13.1929 7.30722 12.9428 7.05717C12.6928 6.80712 12.3536 6.66665 12 6.66665H10C9.82319 6.66665 9.65362 6.59641 9.52859 6.47138C9.40357 6.34636 9.33333 6.17679 9.33333 5.99998V2.66665C9.33333 2.31302 9.19286 1.97389 8.94281 1.72384C8.69276 1.47379 8.35362 1.33331 8 1.33331C7.64638 1.33331 7.30724 1.47379 7.05719 1.72384C6.80714 1.97389 6.66666 2.31302 6.66666 2.66665V5.99998C6.66666 6.17679 6.59643 6.34636 6.4714 6.47138C6.34638 6.59641 6.17681 6.66665 6 6.66665H4C3.64638 6.66665 3.30724 6.80712 3.05719 7.05717C2.80714 7.30722 2.66666 7.64636 2.66666 7.99998V8.65998C2.66666 8.83679 2.7369 9.00636 2.86193 9.13138C2.98695 9.25641 3.15652 9.32665 3.33333 9.32665M5.33333 14.6666L6 12M3.33333 9.33331H12.6667L13.982 13.8446C14.0055 13.9427 14.0064 14.0447 13.9848 14.1432C13.9631 14.2416 13.9195 14.3338 13.857 14.413C13.7946 14.4921 13.715 14.556 13.6243 14.6C13.5336 14.6439 13.4341 14.6667 13.3333 14.6666H2.66666C2.56588 14.6667 2.46639 14.6439 2.37568 14.6C2.28497 14.556 2.20541 14.4921 2.14297 14.413C2.08054 14.3338 2.03685 14.2416 2.01521 14.1432C1.99356 14.0447 1.99451 13.9427 2.018 13.8446L3.33333 9.33331Z" stroke="#78716C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="btn-primary" id="run-button" title="Run button">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.33333 3.33336C3.33326 3.09876 3.39509 2.86829 3.51258 2.66522C3.63008 2.46216 3.79907 2.29369 4.0025 2.17683C4.20592 2.05996 4.43658 1.99885 4.67119 1.99964C4.90579 2.00044 5.13603 2.06312 5.33866 2.18136L13.3367 6.8467C13.5385 6.96382 13.7061 7.13186 13.8226 7.33403C13.9392 7.5362 14.0006 7.76543 14.0008 7.99879C14.001 8.23215 13.94 8.46148 13.8238 8.66385C13.7076 8.86623 13.5403 9.03456 13.3387 9.15203L5.33866 13.8187C5.13603 13.9369 4.90579 13.9996 4.67119 14.0004C4.43658 14.0012 4.20592 13.9401 4.0025 13.8232C3.79907 13.7064 3.63008 13.5379 3.51258 13.3348C3.39509 13.1318 3.33326 12.9013 3.33333 12.6667V3.33336Z" stroke="#FAFAF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
+            </button>
+            <!-- Pick model to use, either Local model or Gemini API -->
+            <select id="model-select" class="model-selector" defaultValue="local">
+                <option value="local">Local Model</option>
+                <option value="gemini">Gemini API</option>
+            </select>
+        </div>
+    </div>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Card -->
+        <div class="card-container">
+            <div class="btn-row">
+                <button class="btn-primary btn-sm" id="download-button">
+                    Download CSV
+                </button>
+                <button class="btn-secondary btn-sm" id="clear-table-button">
+                    Clear Table
+                </button>
+            </div>
+            <div class="table-container">
+                <table class="table" id="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Type
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Awardee
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Role
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Event
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Date
+                                <div class="resizer"></div> 
+                            </th>
+                            <th>
+                                Place
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Signatories
+                                <div class="resizer"></div>
+                            </th>
+                            <th>
+                                Source
+                                <div class="resizer"></div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+
+                    </tbody>
+                </table>                
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="modal" class="modal" hidden>
+        <div class="modal-card">
+            <!-- Upload drag drop area -->
+            <div class="drag-drop-area-container">
+                <div class="drag-drop-area-content">
+                    <p>Click to <b>browse</b> or <b>drag images here</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="imageViewer" class="floating-viewer" style="display: none;">
+        <button class="close-button" onclick="closeImageViewer()">×</button>
+
+        <div class="viewer-header" onmousedown="dragStart(event)">
+            Drag Me
+        </div>
+
+        <img id="viewerImage" src="" alt="Loaded Local Image">
+
+        <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelection(event)">
+    </div>
+            
+    </script>
+    <script type="module" src="/static/js/resizer.js"></script>
+    <script type="module" src="/static/js/image-viewer.js"></script>
+    <script type="module" src="/static/js/api.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</body>
+</html>

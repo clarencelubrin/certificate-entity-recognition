@@ -1,0 +1,44 @@
+/* Containers */
+.sidebar {
+    height: 100%;
+    max-width: 20rem;
+    min-width: 20rem;
+    border-right: 1px solid var(--stone-400, #D6D3D1);
+}
+.sidebar-title {
+    align-self: stretch;
+}
+.sidebar-footer {
+    background-color: var(--stone-100, #FAFAF9);
+    padding: 0.5rem 0.5rem;
+    border-radius: 1.5rem;
+}
+.container {
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    background: var(--stone-200, #F5F5F4);
+}
+.card-container {
+    display: flex;
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 1rem;
+    border: 1px solid var(--stone-400, #D6D3D1);
+    background: var(--stone-100, #FAFAF9);
+    overflow-y: hidden;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}

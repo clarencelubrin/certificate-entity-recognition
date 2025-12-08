@@ -1,0 +1,130 @@
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-card {
+    background-color: var(--stone-100, #FAFAF9);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+}
+
+.drag-drop-area-container {
+    user-select: none;
+    width: 50vw;
+    height: 50vh;
+    
+    border: 2px dashed var(--stone-400, #D6D3D1); /* Light gray dashed border */
+    border-radius: 8px; /* Slightly rounded corners */
+    color: var(--text-primary); /* Dark gray text */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: var(--stone-100, #FAFAF9);
+    
+    transition: all 0.3s ease;
+}
+
+.drag-drop-area-content {
+    text-align: center;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.image-placeholder {
+    /* Style for the placeholder icon/image */
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.drag-drop-area-content p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.drag-drop-area-content p strong {
+    font-weight: bold;
+}
+
+.drag-drop-area-container:hover {
+    color: var(--text-accent, #9333EA); /* Change text color on hover */
+    border-color: var(--accent-300, #C4B4FF); /* Change border color on hover */
+    background-color: var(--accent-100, #ede9fe8f); /* Slightly change background on hover */
+}
+.drag-drop-area-container.is-dragged {
+    color: var(--text-accent, #9333EA); /* Change text color on drag over */
+    border-color: var(--text-accent, #9333EA); /* Change border color on drag over */
+    background-color: var(--accent-200, #DDD6FF); /* Change background on drag over */
+}
+
+/* Queue Items */
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    padding: 0.5rem;
+    border: 1px solid var(--stone-400, #D6D3D1);
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--stone-100, #FAFAF9);
+}
+.file-item:hover {
+    background-color: var(--stone-200, #F5F5F4);
+}
+@keyframes colorPulse {
+    0%, 100% {
+        /* Start/End: Your desired vibrant color */
+        background-color: var(--accent-200);
+    }
+    50% {
+        /* Midpoint: Fade to the body/container background color (e.g., White) */
+        background-color: var(--accent-100); 
+    }
+}
+.file-item.processing {
+    /* Pulsating accent background color */
+    animation: colorPulse 2s infinite;
+    color: var(--text-accent);
+    border: 1px solid var(--accent-300);
+    pointer-events: none;
+}
+.file-item.processing .remove-file-button {
+    opacity: 0;
+}
+.file-thumbnail {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+.remove-file-button {
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary, #78716C);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.10rem 0.5rem;
+    /* Make it round */
+    border-radius: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+.remove-file-button:hover {
+    background-color: var(--stone-300, #E7E5E4);
+}

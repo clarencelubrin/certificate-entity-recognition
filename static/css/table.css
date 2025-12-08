@@ -1,0 +1,94 @@
+/* Table */
+.table {
+    width: 100%;
+    min-width: 1024px;
+    border-collapse: collapse;
+    /* Make header width even */
+    table-layout: fixed;
+    user-select: none;
+    border-top: 1px solid var(--stone-400, #D6D3D1);
+}
+.table th {
+    position: relative;
+    padding: 0.75rem;
+}
+.table th, .table td {
+    text-align: left;
+    border-bottom: 1px solid var(--stone-400, #D6D3D1);
+}
+.table th {
+    border-right: 1px solid var(--stone-400, #D6D3D1);
+    background-color: var(--stone-200, #F5F5F4);
+    font-weight: var(--font-weight-medium);
+}
+.table th:last-child {
+    border-right: none;
+}
+.table td {
+    border-right: 1px solid var(--stone-400, #D6D3D1);
+    font-weight: var(--font-weight-normal);
+}
+.table td:last-child {
+    border-right: none;
+}
+.table tr:hover {
+    background-color: var(--stone-200, #F5F5F4);
+}
+.table .file-location-cell {
+    /* Truncate */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: transparent;
+    padding: 0.5rem;
+}
+.table .file-location-cell:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: var(--text-accent);
+}
+.table .input-cell {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    font-size: var(--body-size);
+    /* Truncate */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Remove default input styles */
+    background: transparent;
+}
+.table .input-cell:focus {
+    outline: none;
+    width: fit-content;
+    min-width: 10rem;
+    max-width: 24rem;
+
+    position: absolute;
+    z-index: 10;
+    text-overflow: clip;
+    /* Text wrap */
+    white-space: normal;
+    word-wrap: break-word;
+    filter: drop-shadow(0 0 4px var(--stone-300));
+    background-color: var(--stone-300, #E7E5E4);
+}
+.resizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px; /* Width of the drag area */
+    cursor: col-resize;
+    height: 100%;
+    background: transparent; /* Initially transparent */
+    z-index: 10;
+    transition: all 0.2s ease-in-out;
+}
+.resizer:hover {
+    background: var(--accent-300); /* Highlight color on hover */
+}
+/* Style for when the user is dragging */
+.resizing {
+    background: var(--accent-400); /* Color when actively dragging */
+}

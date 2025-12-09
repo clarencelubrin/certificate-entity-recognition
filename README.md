@@ -6,7 +6,7 @@ This web application is designed to recognize and extract critical data entities
 The application is deployed on a FastAPI server and uses a modern, high-performance architecture written entirely in Python.
 
 
-## ⚙️ Technology Stack
+## 🖥️ Technology Stack
 
 **Backend** Python and FastAPI
 
@@ -53,7 +53,7 @@ A fine-tuned Named Entity Recognition (NER) SpaCy model identify and tag relevan
 
 4. **Output**
 The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.
-## Configuration
+## ⚙️ Configuration
 
 You can change the configuration (model.conf) of your local model.
 ```python

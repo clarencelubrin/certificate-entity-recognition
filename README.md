@@ -33,26 +33,17 @@ The application is deployed on a FastAPI server and uses a modern, high-performa
 
 The system follows a standard pipeline combining **Computer Vision** and **Natural Language Processing (NLP)** techniques to transform an unstructured image into structured data.
 
-1. **Input and Server Interface**
+1. **Input and Server Interface** - A user uploads a certificate image via the Web Application Frontend. The FastAPI server receives the image and initiates the processing workflow.
 
-A user uploads a certificate image via the Web Application Frontend. The FastAPI server receives the image and initiates the processing workflow.
+2. **Image Pre-processing** - OpenCV handles the image: It cleans the image, corrects distortions (deskewing), and enhances clarity to maximize OCR accuracy.
 
-2. **Image Pre-processing**
+3. **Object Character Recognition and Text Extraction** - OCR engine then reads the cleaned image, converting the visual text into a large block of unstructured text data.
 
-OpenCV handles the image: It cleans the image, corrects distortions (deskewing), and enhances clarity to maximize OCR accuracy.
+4. **LLM Post-processing** - The LLM handles the OCR raw text. It cleans the noisy extracted text to increase NER accuracy.
 
-3. **Object Character Recognition and Text Extraction**
-OCR engine then reads the cleaned image, converting the visual text into a large block of unstructured text data.
+3. **Entity Recognition** - A fine-tuned Named Entity Recognition (NER) SpaCy model identify and tag relevant fields.
 
-4. **LLM Post-processing**
-The LLM handles the OCR raw text. It cleans the noisy extracted text to increase NER accuracy.
-
-3. **Entity Recognition**
-
-A fine-tuned Named Entity Recognition (NER) SpaCy model identify and tag relevant fields.
-
-4. **Output**
-The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.
+4. **Output** - The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.
 ## ⚙️ Configuration
 
 You can change the configuration (model.conf) of your local model.

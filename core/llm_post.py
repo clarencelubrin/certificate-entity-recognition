@@ -1,17 +1,22 @@
+import sys
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
 import re
+import os
+import traceback
 from core.utils import resource_path
+
 # --- CONFIGURATION ---
 REPO_ID = "bartowski/Phi-3.5-mini-instruct-GGUF"
 FILENAME = "Phi-3.5-mini-instruct-Q4_K_M.gguf"
-
+LOCAL_MODEL_DIR = resource_path("models")
+        
 class LLMPostProcessor:
     def __init__(self):
         self.model_path = hf_hub_download(
             repo_id=REPO_ID,
             filename=FILENAME,
-            local_dir=resource_path("models"),
+            local_dir=LOCAL_MODEL_DIR,
             local_dir_use_symlinks=False
         )
         self.llm = Llama(

@@ -29,6 +29,8 @@ The application is deployed on a FastAPI server and uses a modern, high-performa
 
 ## Architecture
 
+![alt text](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/arch.jpg)
+
 The system follows a standard pipeline combining **Computer Vision** and **Natural Language Processing (NLP)** techniques to transform an unstructured image into structured data.
 
 1. **Input and Server Interface**

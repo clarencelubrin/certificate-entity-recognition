@@ -1,12 +1,12 @@
 
-# Certificate Entity Recognition
+# 🖼️ Certificate Entity Recognition
 
 This web application is designed to recognize and extract critical data entities (like holder name, issue date, certificate ID, etc.) from uploaded certificate images. It is built to automate the manual process of data entry, significantly improving efficiency and accuracy in handling large volumes of certificates.
 
 The application is deployed on a FastAPI server and uses a modern, high-performance architecture written entirely in Python.
 
 
-## Technology Stack
+## ⚙️ Technology Stack
 
 **Backend** Python and FastAPI
 
@@ -21,13 +21,13 @@ The application is deployed on a FastAPI server and uses a modern, high-performa
 **Supported Operating System** Windows
 
 
-## Installation
+## 🛠️ Installation
 * Download the [Certificate-Entity-Recognition-v1.0.0.zip](https://github.com/clarencelubrin/certificate-entity-recognition/releases/tag/v1.0.0) archive file.
 * Extract the Certificate-Entity-Recognition-v1.0.0.zip to a file destination of your choice.
 * Run the executable file. (Note: Running the local model for the first time may take a while since it downloads the LLM model for the postprocessing).
     
 
-## Architecture
+## 📦 Architecture
 
 ![alt text](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/arch.jpg)
 
@@ -37,19 +37,19 @@ The system follows a standard pipeline combining **Computer Vision** and **Natur
 
 A user uploads a certificate image via the Web Application Frontend. The FastAPI server receives the image and initiates the processing workflow.
 
-2. **Image Pre-processing and Text Extraction**
+2. **Image Pre-processing**
 
 OpenCV handles the image: It cleans the image, corrects distortions (deskewing), and enhances clarity to maximize OCR accuracy.
 
+3. **Object Character Recognition and Text Extraction**
 OCR engine then reads the cleaned image, converting the visual text into a large block of unstructured text data.
+
+4. **LLM Post-processing**
+The LLM handles the OCR raw text. It cleans the noisy extracted text to increase NER accuracy.
 
 3. **Entity Recognition**
 
-The unstructured text passes into the core logic, which includes NER/LLM and Regex.
-
-Named Entity Recognition (NER) models identify and tag relevant fields (e.g., classifying "Acme Corp" as the Issuing Authority).
-
-Regular Expressions (Regex) are used to reliably extract highly formatted data like dates, IDs, and specific numbers.
+A fine-tuned Named Entity Recognition (NER) SpaCy model identify and tag relevant fields.
 
 4. **Output**
 The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.

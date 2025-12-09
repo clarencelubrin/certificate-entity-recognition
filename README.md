@@ -1,6 +1,6 @@
 
 # 🖼️ Certificate Entity Recognition
-
+![demo](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/demo.gif)
 This web application is designed to recognize and extract critical data entities (like holder name, issue date, certificate ID, etc.) from uploaded certificate images. It is built to automate the manual process of data entry, significantly improving efficiency and accuracy in handling large volumes of certificates.
 
 The application is deployed on a FastAPI server and uses a modern, high-performance architecture written entirely in Python.

@@ -43,9 +43,9 @@ The system follows a standard pipeline combining **Computer Vision** and **Natur
 
 4. **Output** - The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.
 
-## Finetuned SpaCy NER
+## 🔧 Fine-tuned SpaCy NER
 ![graph](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/graph.png)
-The finetuned NER model is trained with 142 clean certificates (as ground truth patterns), 142 augmented certificates (noisy certificates), and 500 synthetic data (generated from a csv file of 50 given names, events, dates, places, etc.) with a total of 784 certificates. The en_core_web_trf is used as a base for the finetuning of the NER model. It achieved an F-Score of around 90%, recall of ~91%, and precision of ~88%.
+The fine-tuned NER model is trained with 142 clean certificates (as ground truth patterns), 142 augmented certificates (noisy certificates), and 500 synthetic data (generated from a csv file of 50 given names, events, dates, places, etc.) with a total of 784 certificates. The *en_core_web_trf* is used as a base for the fine-tuning of the NER model. It achieved an F-Score of around 90%, recall of ~91%, and precision of ~88%.
 
 ## ⚙️ Configuration
 

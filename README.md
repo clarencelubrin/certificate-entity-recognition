@@ -1,10 +1,10 @@
 
 # 🖼️ Certificate Entity Recognition
 ![demo](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/demo.gif)
+
 This web application is designed to recognize and extract critical data entities (like holder name, issue date, certificate ID, etc.) from uploaded certificate images. It is built to automate the manual process of data entry, significantly improving efficiency and accuracy in handling large volumes of certificates.
 
 The application is deployed on a FastAPI server and uses a modern, high-performance architecture written entirely in Python.
-
 
 ## 🖥️ Technology Stack
 
@@ -20,12 +20,10 @@ The application is deployed on a FastAPI server and uses a modern, high-performa
 
 **Supported Operating System** Windows
 
-
 ## 🛠️ Installation
 * Download the [Certificate-Entity-Recognition-v1.0.0.zip](https://github.com/clarencelubrin/certificate-entity-recognition/releases/tag/v1.0.0) archive file.
 * Extract the Certificate-Entity-Recognition-v1.0.0.zip to a file destination of your choice.
 * Run the executable file. (Note: Running the local model for the first time may take a while since it downloads the LLM model for the postprocessing).
-    
 
 ## 📦 Architecture
 
@@ -44,15 +42,20 @@ The system follows a standard pipeline combining **Computer Vision** and **Natur
 3. **Entity Recognition** - A fine-tuned Named Entity Recognition (NER) SpaCy model identify and tag relevant fields.
 
 4. **Output** - The application compiles all the recognized entities into a Structured Output format (typically JSON), which is then returned by the FastAPI server to the user.
+
+## Finetuned SpaCy NER
+![graph](https://github.com/clarencelubrin/certificate-entity-recognition/blob/main/markup-img/graph.png)
+The finetuned NER model is trained with 142 clean certificates (as ground truth patterns), 142 augmented certificates (noisy certificates), and 500 synthetic data (generated from a csv file of 50 given names, events, dates, places, etc.) with a total of 784 certificates. The en_core_web_trf is used as a base for the finetuning of the NER model. It achieved an F-Score of around 90%, recall of ~91%, and precision of ~88%.
+
 ## ⚙️ Configuration
 
-You can change the configuration (model.conf) of your local model.
+You can change the configuration (*model.conf*) of your local model.
 ```python
 OCR_MODEL               = paddle      # Either doctr or paddle
 HAS_LLM_POSTPROCESSING  = True        # Is LLM postprocessing included
 HAS_IMAGE_PREPROCESSING = True        # Is Image preprocessing included
 ```
-If you want to use Google Gemini Flash 2.5, you can provide your own Gemini API key:
+If you want to use Google Gemini Flash 2.5 instead of using the created local model, you can provide your own Gemini API key:
 ```python
 GEMINI_API_KEY          =             # Gemini API key (optional)
 ```
@@ -61,4 +64,20 @@ FastAPI backend server configuration:
 WORKERS                 = 1           # Number of workers for FastAPI
 HOST                    = 127.0.0.0   # Host IP address
 PORT                    = 800         # Host port number
+```
+
+## ⚙️ Configuration Examples
+
+If you prioritize accuracy:
+```python
+OCR_MODEL               = paddle      # PaddleOCR is more accurate
+HAS_LLM_POSTPROCESSING  = True        
+HAS_IMAGE_PREPROCESSING = True        
+```
+
+If you prioritize speed:
+```python
+OCR_MODEL               = doctr      # PaddleOCR is more accurate
+HAS_LLM_POSTPROCESSING  = False        
+HAS_IMAGE_PREPROCESSING = False        
 ```

@@ -1,0 +1,74 @@
+/* Colors */
+:root {
+    --text-accent: #9333EA; 
+    --text-accent-hover: #7E22CE;
+    --text-primary: #78716C;
+    --text-secondary: #D6D3D1;
+    --stone-100: #FAFAF9;
+    --stone-200: #F5F5F4;
+    --stone-300: #E7E5E4;
+    --stone-400: #D6D3D1;
+    --stone-500: #A6A09B;
+    --accent-100: #ede9fe8f;
+    --accent-200: #DDD6FF;
+    --accent-300: #C4B4FF;
+    --accent-400: #A684FF;
+    --accent-500: #8E51FF;
+
+    /* Font Sizes */
+    --h1-size: 2.25rem; /* 36px */
+    --h2-size: 1.875rem; /* 30px */
+    --h3-size: 1.5rem; /* 24px */
+    --h4-size: 1.25rem; /* 20px */
+    --body-size: 1rem; /* 16px */
+    --small-size: 0.875rem; /* 14px */
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+}
+body {
+    background-color: var(--stone-100);
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+}
+/* Typography Styles */
+h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-accent);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+}
+h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+}
+h4 {
+    font-size: var(--h4-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+}
+body {
+    font-size: var(--body-size);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-primary);
+}
+small {
+    font-size: var(--small-size);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-secondary);
+}

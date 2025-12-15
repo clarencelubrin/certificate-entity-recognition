@@ -1,0 +1,29 @@
+
+/* Image viewer */
+.floating-viewer {
+    /* Make it float above content */
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    
+    /* Appearance */
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    z-index: 1000; /* Ensure it is on top */
+}
+
+.viewer-header {
+    cursor: grab; /* Indicates drag capability */
+    padding: 5px;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+#viewerImage {
+    max-width: 400px; /* Adjust size as needed */
+    max-height: 400px;
+    display: block; /* Remove space below image */
+}

@@ -1,0 +1,9 @@
+.venv/
+.git/
+__pycache__/
+config.conf
+Phi-3.5-mini-instruct-Q4_K_M.gguf
+build/
+dist/
+app.spec
+temp_preprocessed_images.png

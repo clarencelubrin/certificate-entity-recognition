@@ -21,8 +21,8 @@ The application is deployed on a FastAPI server and uses a modern, high-performa
 **Supported Operating System** Windows
 
 ## 🛠️ Installation
-* Download the [Certificate-Entity-Recognition-v1.0.0.zip](https://github.com/clarencelubrin/certificate-entity-recognition/releases/tag/v1.0.0) archive file.
-* Extract the Certificate-Entity-Recognition-v1.0.0.zip to a file destination of your choice.
+* Download the [Certificate-Entity-Recognition-v1.1.0.zip](https://github.com/clarencelubrin/certificate-entity-recognition/releases/tag/v1.1.0) archive file.
+* Extract the Certificate-Entity-Recognition-v1.1.0.zip to a file destination of your choice.
 * Run the executable file. (Note: Running the local model for the first time may take a while since it downloads the LLM model for the postprocessing).
 
 ## 📦 Architecture

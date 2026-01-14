@@ -13,6 +13,25 @@
     padding: 0.5rem 0.5rem;
     border-radius: 1.5rem;
 }
+@media (max-width: 768px) {
+    .sidebar {
+        max-width: 100%;
+        min-width: 100%;
+        height: 100vh;
+        border-right: none;
+        border-bottom: 1px solid var(--stone-400, #D6D3D1);
+    }
+    .container{
+        height: 100vh;
+    }
+    body {
+        flex: auto;
+        flex-direction: column;
+        overflow-y: visible;
+        height: 200vh;
+    }
+}
+
 .container {
     display: flex;
     padding: 2rem;

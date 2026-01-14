@@ -15,7 +15,6 @@
 
     /* Text */
     color: var(--stone-100, #FAFAF9);
-    font-family: Inter;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
@@ -65,7 +64,6 @@
     color: var(--text-primary, #78716C);
 
     /* text-bold */
-    font-family: Inter;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;

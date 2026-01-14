@@ -28,11 +28,28 @@
     --font-weight-medium: 500;
     --font-weight-bold: 700;
 }
+/* REGULAR (Weight 400) */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* BOLD (Weight 700) */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('../fonts/GoogleSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 body {
     background-color: var(--stone-100);
     margin: 0;
     padding: 0;
-    font-family: "Inter", sans-serif;
+    font-family: "Google Sans", sans-serif;
     width: 100vw;
     height: 100vh;
     display: flex;
